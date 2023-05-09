@@ -12,12 +12,17 @@ export const metadata = {
 };
 
 export default function RootLayout({ children, session }) {
+  console.log(inter.className);
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={[inter.className, "bg-slate-950 text-white  ')]"].join(" ")}
+      >
         <SessionProvider session={session}>
           <AppBar />
-          <div className="p-10 bg-indigo-100 h-screen">{children}</div>
+          <div className="min-h-screen max-w-7xl mx-auto sm:px-6">
+            {children}
+          </div>
         </SessionProvider>
       </body>
     </html>

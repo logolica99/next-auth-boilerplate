@@ -9,10 +9,6 @@ const LoginPage = () => {
   const pass = useRef("");
 
   const error = useSearchParams().get("error");
-  
-
- 
-
 
   const onSubmit = async () => {
     const result = await signIn("credentials", {
@@ -23,18 +19,25 @@ const LoginPage = () => {
     });
   };
   return (
-    <div className="px-7 py-4 shadow bg-white rounded-md flex flex-col gap-2">
+    <div className="px-7 py-4 shadow   bg-white rounded-md flex flex-col gap-2">
       <input
-        lableText="User Name"
+        className="text-black"
+        placeholder="Username"
         onChange={(e) => (userName.current = e.target.value)}
       />
       <input
-        lableText="Password"
+        className="text-black"
         type={"password"}
+        placeholder="password"
         onChange={(e) => (pass.current = e.target.value)}
       />
       {error && <SignInError error={error} />}
-      <button onClick={onSubmit}>Login</button>
+      <button
+        className="transition-colors hover:bg-blue-700 font-semibold bg-blue-500 px-6 py-2 rounded"
+        onClick={onSubmit}
+      >
+        Login
+      </button>
     </div>
   );
 };
@@ -56,7 +59,7 @@ const errors = {
 
 const SignInError = ({ error }) => {
   const errorMessage = error && (errors[error] ?? errors.default);
-  return <div>{errorMessage}</div>;
+  return <div className="text-red-500">{errorMessage}</div>;
 };
 
 export default LoginPage;
